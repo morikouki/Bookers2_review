@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="row">
+		<h2>Books</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Title</th>
+					<th>Opinion</th>
+				</tr>
+			</thead>
+			<% @books.each do |book| %>
+			<tbody>
+				<tr>
+					<td><%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, class: "img-circle pull-left profile-thumb", fallback: ""%></td>
+					<td><%= book.title %></td>
+					<td><%= book.body %></td>
+				</tr>
+			</tbody>
+			<% end %>
+		</table>
+	</div>
+</div>
