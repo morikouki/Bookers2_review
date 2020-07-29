@@ -18,7 +18,7 @@
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
                 <li>
-                  <%= link_to  do %>
+                  <%= link_to user_path(current_user.id) do %>
                     <span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home
                   <% end %>
                 </li>
@@ -28,7 +28,7 @@
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to  do %>
+                  <%= link_to books_path do %>
                     <span class="glyphicon glyphicon-book" aria-hidden="true"></span>Books
                   <% end %>
                 </li>
@@ -62,8 +62,10 @@
             </ul>
         </div>
     </header>
-    <%= notice %>
     <div class="main">
+      <div class="container">
+        <p class="notice"><%= notice %></p>
+      </div>
       <%= yield %>
     </div>
     <footer>
