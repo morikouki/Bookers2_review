@@ -1,0 +1,8 @@
+<% comments.each do |comment| %>
+	<div class='comment-box' style='padding: 20px;'>
+		<%= attachment_image_tag comment.user, :profile_image, fallback: 'noimage.png', size: '30x30' %>
+		<%= comment.user.name %>
+		<%= comment.comment %>
+		<%= link_to '削除', book_book_comments_path(comment.book, comment), method: :delete, remote: true %>
+	</div>
+<% end %>
