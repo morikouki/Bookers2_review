@@ -39,6 +39,22 @@
 					</tr>
 				</tbody>
 			</table>
+
+			<% @comments.each do |comment| %>
+				<div class='comment-box' style='padding: 20px;'>
+					<%= attachment_image_tag comment.user, :profile_image, fallback: 'noimage.png', size: '30x30' %>
+					<%= comment.user.name %>
+					<%= comment.comment %>
+				</div>
+			<% end %>
+
+			<div class="comment-form">
+				<%= form_with model: @comment, url: book_book_comments_path(@book), method: :post do |f| %>
+					<%= f.label :comment %>
+					<%= f.text_area :comment %>
+					<%= f.submit 'コメントする' %>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>
