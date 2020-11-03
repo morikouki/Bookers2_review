@@ -10,8 +10,29 @@
 			<th>introduction</th>
 			<td><%= user.introduction %></td>
 		</tr>
+		<tr>
+			<th>フォロー中</th>
+			<td><%= user.follower_user.count %></td>
+		</tr>
+		<tr>
+			<th>フォロワー</th>
+			<td><%= user.following_user.count %></td>
+		</tr>
 	</tbody>
 </table>
-<%= link_to edit_user_path(user) do %>
-	<span class="glyphicon glyphicon-wrench btn btn-default btn-block" aria-hidden="true"></span>
+
+<% if current_user != user %>
+	<% if current_user.following?(user) %>
+		<%= link_to user_relationships_path(user), method: :delete, class: 'btn btn-primary' do %>
+			フォロー外す
+		<% end %>
+	<% else %>
+		<%= link_to user_relationships_path(user), method: :post, class: 'btn btn-success' do %>
+			フォローする
+		<% end %>
+	<% end %>
+<% else %>
+	<%= link_to edit_user_path(user) do %>
+		<span class="glyphicon glyphicon-wrench btn btn-default btn-block" aria-hidden="true"></span>
+	<% end %>
 <% end %>
