@@ -1,0 +1,6 @@
+<th>フォロー中</th>
+<td>
+	<%= link_to user_follower_path(user) do %>
+		<%= user.follower_user.count %>
+	<% end %>
+</td>

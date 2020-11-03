@@ -1,0 +1,6 @@
+<th>フォロワー</th>
+<td>
+	<%= link_to user_following_path(user) do %>
+		<%= user.following_user.count %>
+	<% end %>
+</td>
